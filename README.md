@@ -46,10 +46,8 @@ Dentro do terminal source activate ufes_lcad anaconda-navigator ou somente jupyt
 
 ## 9-Montando a Rede VGG 16
 
-
-The Road Mapper module manages the *map_type* CARMEN_ROAD_MAP_v (prefix character 'r'), the data structure *road_prob* and the map server message CARMEN_MAP_SERVER_ROAD_MAP_NAME. Each cell in a road gridmap contains the following data:
+- Importante os pacotes 
 ```c
- # Importando os pacotes 
 import tensorflow as tf
 import keras
 import numpy as np
@@ -62,16 +60,21 @@ from keras.layers import Dropout
 from keras.optimizers import SGD
 from keras.utils import multi_gpu_model
 from keras.preprocessing.image import ImageDataGenerator
- 
-# Definindo variáveis para ajudar nos parametros de treinamento
+```
+
+- Definindo variáveis para ajudar nos parametros de treinamento
+```
 width, height, batch = 96, 96, 50
 sgd = SGD(lr=0.01, decay=5e-4, momentum=0.9, nesterov=True)
+```
 
-# Define que o metodo de montagem do modelo será sequencial camanda por camanda
-modelo = Sequential()
-# Construindo a primeira camada
-# Definimos que esta camada produzirá 64 filtros de saída, seu kernel é de 3 x 3 o stride é de 1 por 1
-# a entrada será de 224 por 224 colorida, portanto 3 canais e a funcão de ativacao desta camada será a ReLu 
+- Define que o metodo de montagem do modelo será sequencial camanda por camanda
+```modelo = Sequential()```
+
+- Construindo a primeira camada
+- Definimos que esta camada produzirá 64 filtros de saída, seu kernel é de 3 x 3 o stride é de 1 por 1
+- a entrada será de 224 por 224 colorida, portanto 3 canais e a funcão de ativacao desta camada será a ReLu 
+```
 modelo.add(Conv2D(filters = 64, kernel_size = (3, 3), padding= 'same', strides=(1,1), input_shape = (width, height, 3), activation = 'relu'))
 # seguindo sequencialmente configuramos a segunda camada, que assume como entrada a saída da camada anterior e por isso 
 # não é preciso declarar este valor, aqui ainda mantemos 4 filtros de saída, kernel de 3 x 3 e stride é de 1 por 1
