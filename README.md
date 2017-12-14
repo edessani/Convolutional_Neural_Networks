@@ -1,6 +1,5 @@
-# Convolutional Neural Networks
-
-# Very Deep Convolutional Networks for Large-Scale Image Recognition
+# Criar CNN - Convolutional Neural Network para identificacão de cones com TensorFlow e Keras
+# Desde a instalacao do Anaconda ao Treino e Predicao da rede ( VGG16 )
 
 SUMMARY
 - [Introduction](#Introduction)
