@@ -10,9 +10,9 @@
 - [4 - Instalando o Cuda e Cudnn com suporte a GPU](#4-install-cuda-cudnn-support-gpu)
 - [5 - CUDA 8.0 GA2](#5-cuda-8-ga2)
 - [6 - PATH](#6-path)
-- [7 - Instalando os pacotes necessários](#install-pacages)
-- [8 - Iniciando o jupyter notebook](#start-jupter)
-- [9 - Montando a Rede VGG 16](#create-vgg-16)
+- [7 - Instalando os pacotes necessários](#instalando-pacotes)
+- [8 - Iniciando o jupyter notebook](#iniciando-jupyter)
+- [9 - Montando a Rede VGG 16](#montando-rede-vgg-16)
 
 ## 1-Install Anaconda
 Acessar o site http://anaconda.com/download
@@ -37,14 +37,14 @@ O proximo passo é a inclusao do caminho destes pacotes no PATH sudo nano ~/.bas
 
 sudo apt-get install libcupti-dev
 
-## 7-Instalando os pacotes necessários
+## 7-Instalando Pacotes
 Criar um ambiente especifico para este tuto
 dentro do terminal conda create -n ufes_lcad python=3.6 source activate ufes_lcad instalar os pacotes basicos que iremos trabalhar conda install keras conda install matplotlib conda install numpy conda install pandas conda install scikit-learn pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp36-cp36m-linux_x86_64.whl
 
-## 8-Iniciando o Jupyter notebook
+## 8-Iniciando Jupyter
 Dentro do terminal source activate ufes_lcad anaconda-navigator ou somente jupyter clicar em new -> python 3
 
-## 9-Montando a Rede VGG 16
+## 9-Montando Rede VGG 16
 
 - Importante os pacotes 
 ```c
