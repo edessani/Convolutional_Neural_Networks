@@ -47,18 +47,27 @@ Criar um ambiente especifico para este tuto
 dentro do terminal conda create -n ufes_lcad python=3.6 source activate ufes_lcad instalar os pacotes basicos que iremos trabalhar conda install keras conda install matplotlib conda install numpy conda install pandas conda install scikit-learn pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp36-cp36m-linux_x86_64.whl
 
 ## 8-Iniciando o Jupyter notebook
+Dentro do terminal source activate ufes_lcad anaconda-navigator ou somente jupyter clicar em new -> python 3
 
-
-
-
-
-
-
-
+## 9-Montando a Rede VGG 16
 
 
 The Road Mapper module manages the *map_type* CARMEN_ROAD_MAP_v (prefix character 'r'), the data structure *road_prob* and the map server message CARMEN_MAP_SERVER_ROAD_MAP_NAME. Each cell in a road gridmap contains the following data:
 ```c
+ # Importando os pacotes 
+import tensorflow as tf
+import keras
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Conv2D
+from keras.layers import MaxPooling2D
+from keras.layers import Flatten
+from keras.layers import Dense
+from keras.layers import Dropout
+from keras.optimizers import SGD
+from keras.utils import multi_gpu_model
+from keras.preprocessing.image import ImageDataGenerator
+ 
  typedef struct				/* Probabilities of a pixel in the road map: range(0, 0xffff) */
  {
    unsigned short off_road;		/* Probability of being off the road */
