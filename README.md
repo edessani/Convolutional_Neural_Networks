@@ -231,11 +231,9 @@ with open("VGG16Estrutura.json", "w") as json_file:
    unsigned short broken_marking;	/* Probability of being in a lane broken marking */
    unsigned short lane_center;		/* Probability of being at the center of a lane */
  } road_prob;
-```
 The following color code is used for displaying a road map:
   - ![#ffffff](data/20x20_bg_white_border_gray.png) RGB(255, 255, 255) = off the road
   - ![#ff0000](https://placehold.it/20x20/ff0000/?text=+) RGB(255, 000, 000) = solid marking
   - ![#0000ff](https://placehold.it/20x20/0000ff/?text=+) RGB(000, 000, 255) = broken marking
   - ![#00ff00](https://placehold.it/20x20/00ff00/?text=+) RGB(000, 255, 000) = center of a lane
-
 
