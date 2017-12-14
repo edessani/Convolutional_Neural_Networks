@@ -1,5 +1,6 @@
 # Criar CNN - Convolutional Neural Network para identificacão de cones com TensorFlow e Keras
  - Desde a instalacao do Anaconda ao Treino e Predicao da rede ( VGG16 )
+# Autores: Evandro Dessani e Eduardo Frigini
 
 ## Index
 
