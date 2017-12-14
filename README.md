@@ -42,3 +42,5 @@ The following color code is used for displaying a road map:
   - ![#ff0000](https://placehold.it/20x20/ff0000/?text=+) RGB(255, 000, 000) = solid marking
   - ![#0000ff](https://placehold.it/20x20/0000ff/?text=+) RGB(000, 000, 255) = broken marking
   - ![#00ff00](https://placehold.it/20x20/00ff00/?text=+) RGB(000, 255, 000) = center of a lane
+
+## Instalando-o-Anaconda-5.1
