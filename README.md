@@ -2,7 +2,7 @@
 
 # Very Deep Convolutional Networks for Large-Scale Image Recognition
 
-Convolutional networks (ConvNets) have recently enjoyed a great success in large-scale image and video recognition.
+- Convolutional networks (ConvNets) have recently enjoyed a great success in large-scale image and video recognition.
 Krizhevsky - 2012;
 Zeiler & Fergus - 2013;
 Sermanet - 2014;  Simonyan & Zisserman - 2014)
