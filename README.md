@@ -144,43 +144,52 @@ modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
 modelo.add(Flatten())
 ```
 
-# serão 3 camadas FC 
-# a primeira tem uma entrada de tamanho de 4096 e funcao de ativacao relu
+- Serão 3 camadas FC. A primeira tem uma entrada de tamanho de 4096 e funcao de ativacao relu
+```
 modelo.add(Dense(units = 4096, activation = 'relu'))
-# logo após a primeira camada FC é feito um dropout com taxa de 50%
-modelo.add(Dropout(0.5))
-# a segunda camada FC tem a mesma configuracao da primeira
-modelo.add(Dense(units = 4096, activation = 'relu'))
-# logo após a segunda camada FC é feito mais um dropout com taxa de 50%
-modelo.add(Dropout(0.5))
-# a terceira camada na rede original VGG16 tem entrada de tamanho 1000, pois a mesma classifica 1000 classes
-# devido a nossa necessidade de classificar apenas 3 classes o meu numero de entrada para a terceira camada será de 3
-# a funcao de ativacao da terceira camada a softmax
-modelo.add(Dense(units = 3, activation = 'softmax'))
+```
 
-# antes de iniciar o treino da rede precisamos definir onde estão as fotos que serao usadas para treino
-# e onde estao as fotos que serao usadas para teste
-# para aumentar o numero de amostras de fotos utilzamos o recurso do keras que aumenta/diminui a foto, inverte, gira e etc
+- logo após a primeira camada FC é feito um dropout com taxa de 50%
+```
+modelo.add(Dropout(0.5))
+```
+
+- A segunda camada FC tem a mesma configuracao da primeira
+```
+modelo.add(Dense(units = 4096, activation = 'relu'))
+```
+
+- Logo após a segunda camada FC é feito mais um dropout com taxa de 50%
+```
+modelo.add(Dropout(0.5))
+```
+
+- A terceira camada na rede original VGG16 tem entrada de tamanho 1000, pois a mesma classifica 1000 classes devido a nossa necessidade de classificar apenas 3 classes o meu numero de entrada para a terceira camada será de 3 a funcao de ativacao da terceira camada a softmax
+```
+modelo.add(Dense(units = 3, activation = 'softmax'))
+```
+
+- Antes de iniciar o treino da rede precisamos definir onde estão as fotos que serao usadas para treino e onde estao as fotos que serao usadas para teste para aumentar o numero de amostras de fotos utilzamos o recurso do keras que aumenta/diminui a foto, inverte, gira e etc
+```
 train_datagen = ImageDataGenerator(rescale = 1./255, shear_range = 0.2, zoom_range = 0.2, horizontal_flip = True)
 test_datagen = ImageDataGenerator(rescale = 1./255)
+```
 
-# definimos entao onde esta o diretorio contendo o dataset separado em pastas com a seguinte hierarquia
-# dentro da pasta dataset temos mais duas pastas com nome treino e teste
-# dentro de cada uma das pastas de treino e teste temos a quantidade de pastas equivalente as classes no meu caso 3
-# ou seja tenho 3 pastas dentro da pasta treino e mais 3 pastas dentro da pasta teste
-# elas devem ter o mesmo nome e conter a classe que será treinada
+ - Definimos entao onde esta o diretorio contendo o dataset separado em pastas com a seguinte hierarquia dentro da pasta dataset temos mais duas pastas com nome treino e teste dentro de cada uma das pastas de treino e teste temos a quantidade de pastas equivalente as classes no meu caso 3, ou seja, tenho 3 pastas dentro da pasta treino e mais 3 pastas dentro da pasta teste elas devem ter o mesmo nome e conter a classe que será treinada.
+ - Aqui definimos também o formato que será a entrada da primeira camada de rede, o padrao de entrada para a VGG16 224 x 224 x 3, o batch padrao da VGG16 é de 256
 
-# aqui definimos também o formato que será a entrada da primeira camada de rede, 
-# o padrao de entrada para a VGG16 224 x 224 x 3 
-# o batch padrao da VGG16 é de 256
+```
 training_set = train_datagen.flow_from_directory('dataset/training_set', target_size = (width, height), batch_size = batch, class_mode = 'categorical')
 test_set = test_datagen.flow_from_directory('dataset/test_set', target_size = (width, height), batch_size = batch, class_mode = 'categorical')
+```
 
-# antes de iniciar o treino podemos exibir como está montada a rede
+- Antes de iniciar o treino podemos exibir como está montada a rede
+```
 modelo.summary()
+```
 
-# podemos agora iniciar o treinamento da nossa rede
-# aqui ainda definimos o numero de passos por treino e validacao e tambem a quantidade de epochs
+- Podemos agora iniciar o treinamento da nossa rede, aqui ainda definimos o numero de passos por treino e validacao e tambem a quantidade de epochs
+```
 modelo.fit_generator(training_set, steps_per_epoch = 8591, epochs = 15, validation_data = test_set, validation_steps = 2200,  use_multiprocessing=True)
 
 from keras.preprocessing import image
@@ -191,13 +200,26 @@ result = modelo.predict(test_image)
 print(result)
 training_set.class_indices
 
-## Save model pesos
+```
+
+# Save model pesos
+```
 modelo.save('VGG16.h5')
 print("Model saved")    
-## Save model estrutura
+```
+
+# Save model estrutura
+```
 modelo_json = modelo.to_json()
 with open("VGG16Estrutura.json", "w") as json_file:
     json_file.write(modelo_json)
+ ```
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
