@@ -46,7 +46,7 @@ Dentro do terminal source activate ufes_lcad anaconda-navigator ou somente jupyt
 
 ## 9-Montando Rede VGG 16
 
-- Importante os pacotes 
+- Importando os pacotes 
 ```c
 import tensorflow as tf
 import keras
@@ -89,41 +89,60 @@ modelo.add(Conv2D(filters = 64, kernel_size = (3, 3), padding='same', strides=(1
 ```
 modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
 ```
+- Com isso concluímos o primeiro bloco da VGG 16, vou considerar o fim de cada bloco sempre após uma camada de pooling
+- No segundo bloco da VGG 16 há um aumento no número de saídas das camadas em 2x os outros parametros sao iguais, este aumento ocorre sempre que houver um pooling e tem fator de multiplicacao 2 limitado a 512
 
-# com isso concluímos o primeiro bloco da VGG 16, vou considerar o fim de cada bloco sempre após uma camada de pooling
-
-# No segundo bloco da VGG 16 há um aumento no número de saídas das camadas em 2x os outros parametros sao iguais, este
-# aumento ocorre sempre que houver um pooling e tem fator de multiplicacao 2 limitado a 512
+```
 modelo.add(Conv2D(filters = 128, kernel_size = (3, 3), padding='same', strides=(1,1), activation = 'relu'))
 modelo.add(Conv2D(filters = 128, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
-# seguimos para a segunda camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
-modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
 
-# No terceiro bloco da VGG 16 há um aumento no número de saídas das camadas em 2x e há o acrescimo de mais uma camada 
-# convolucional antes do pooling
-modelo.add(Conv2D(filters = 256, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
-modelo.add(Conv2D(filters = 256, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
-modelo.add(Conv2D(filters = 256, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
-# seguimos para a terceira camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+- Seguimos para a segunda camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+```
 modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
 
-# No quarto bloco da VGG 16 há um aumento no número de saídas das camadas em 2x os outros parametros sao iguais
+- No terceiro bloco da VGG 16 há um aumento no número de saídas das camadas em 2x e há o acrescimo de mais uma camada convolucional antes do pooling
+```
+modelo.add(Conv2D(filters = 256, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
+modelo.add(Conv2D(filters = 256, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
+modelo.add(Conv2D(filters = 256, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
+```
+
+- seguimos para a terceira camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+```
+modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
+
+- No quarto bloco da VGG 16 há um aumento no número de saídas das camadas em 2x os outros parametros sao iguais
+```
 modelo.add(Conv2D(filters = 512, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
 modelo.add(Conv2D(filters = 512, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
 modelo.add(Conv2D(filters = 512, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu')) 
-# seguimos para a terceira camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
-modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
 
-# No quinto bloco da VGG 16 todos parametros sao iguais ao da quarta camada, os valores dos filtros nao sao multiplicados por 2 
-# porque já atingimos o teto de 512
+- seguimos para a terceira camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+```
+modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
+
+- No quinto bloco da VGG 16 todos parametros sao iguais ao da quarta camada, os valores dos filtros nao sao multiplicados por 2 porque já atingimos o teto de 512
+
+```
 modelo.add(Conv2D(filters = 512, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
 modelo.add(Conv2D(filters = 512, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu'))
 modelo.add(Conv2D(filters = 512, kernel_size = (3, 3), padding='same', strides=(1,1), activation= 'relu')) 
-# seguimos para a quarta camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
-modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
 
-# neste momento preparamos a saída para o formato que a entrada da primeira camada FullyConnected precisa
+- seguimos para a quarta camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+```
+modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
+
+- neste momento preparamos a saída para o formato que a entrada da primeira camada FullyConnected precisa
+```
 modelo.add(Flatten())
+```
 
 # serão 3 camadas FC 
 # a primeira tem uma entrada de tamanho de 4096 e funcao de ativacao relu
