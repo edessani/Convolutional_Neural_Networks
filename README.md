@@ -10,9 +10,9 @@
 - [4 - Instalando o Cuda e Cudnn com suporte a GPU](#4-install-cuda-cudnn-support-gpu)
 - [5 - CUDA 8.0 GA2](#5-cuda-8-ga2)
 - [6 - PATH](#6-path)
-- [7 - Instalando os pacotes necessários](#instalando-pacotes)
-- [8 - Iniciando o jupyter notebook](#iniciando-jupyter)
-- [9 - Montando a Rede VGG 16](#montando-rede-vgg-16)
+- [7 - Instalando os pacotes](#7-instalando-pacotes)
+- [8 - Iniciando o jupyter notebook](#8-iniciando-jupyter)
+- [9 - Montando a Rede VGG 16](#9-montando-rede-vgg-16)
 
 ## 1-Install Anaconda
 Acessar o site http://anaconda.com/download
