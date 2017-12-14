@@ -7,12 +7,12 @@
 - [1 - Install Anaconda 5.1](#1-install-anaconda)
 - [2 - Linux Ubuntu 16](#2-linux-ubuntu-16)
 - [3 - Python para Windows](#3-python-para-windows)
-- [4 - Instalando o Cuda e Cudnn com suporte a GPU](#4-Install-CUDA-Cudnn-support-GPU)
-- [5 - Cuda 8 GA2]
-- [6 - PATH] 
-- [7 - Instalando os pacotes necessários]
-- [8 - Iniciando o jupyter notebook]
-- [9 - Montando a Rede VGG 16]
+- [4 - Instalando o Cuda e Cudnn com suporte a GPU](#4-install-cuda-cudnn-support-gpu)
+- [5 - CUDA 8.0 GA2](#5-cuda-8-ga2)
+- [6 - PATH](#6-path)
+- [7 - Instalando os pacotes necessários](#install-pacages)
+- [8 - Iniciando o jupyter notebook](#start-jupter)
+- [9 - Montando a Rede VGG 16](#create-vgg-16)
 
 
 - [Saving Remission Map Images](#saving-remission-map-images)
@@ -31,8 +31,23 @@ Python 3.6 https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe 
 
 # A partir deste momento vou cobrir os passos apenas para o linux como sistema operacional
 
-## 3 - Install CUDA e Cudnn com suporte a GPU
+## 4-Install-CUDA-Cudnn-support-GPU
 Caso queira rodar os treinamentos com recursos de GPU é necessário instalar os pacotes CUDA e Cudnn as versoes destes sao muito importantes para que tudo funcione corretamente como até o momento a ultima versao disponível do tensorflow é a 1.4 vou usar as versões de Cuda e Cudnn que a pagina recomenda como versões suportadas lembrando que a placa de video deve ser compatível com cuda e ter os drivers da nvidia instalados
+
+## 5-CUDA 8 GA2
+Para facilitar a instalacao vou usar o wget abrir um terminal acessar o local onde quer que o arquivo seja baixado /home/usuario/Downloads mkdir Cuda cd Cuda wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run assim que o download for concluido dar direito de execucao para o arquivo sudo chmod +x nomeArquivoBaixado sudo ./nomeArquivoBaixado mesma situacao para o patch desta versao wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run assim que o download for concluido dar direito de execucao para o arquivo sudo chmod +x nomeArquivoPatchBaixado sudo ./nomeArquivoPatchBaixado depois devemos baixar os arquivos do cuda e extrai-los wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170307/Ubuntu16_04_x64/libcudnn6_6.0.20-1+cuda8.0_amd64-deb sudo dpkg -i nomeArquivoBaixado
+
+## 6-Path
+O proximo passo é a inclusao do caminho destes pacotes no PATH sudo nano ~/.bashrc inserir no final do arquivo as seguintes linhas export PATH=/usr/local/cuda-8.0/binPATH:+:$PATHexportLDLIBRARYPATH=/usr/local/cuda−8.0/lib64 PATH:+:$PATHexportLDLIBRARYPATH=/usr/local/cuda−8.0/lib64 {LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+sudo apt-get install libcupti-dev
+
+## 7-Instalando os pacotes necessários
+Criar um ambiente especifico para este tuto
+dentro do terminal conda create -n ufes_lcad python=3.6 source activate ufes_lcad instalar os pacotes basicos que iremos trabalhar conda install keras conda install matplotlib conda install numpy conda install pandas conda install scikit-learn pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp36-cp36m-linux_x86_64.whl
+
+## 8-Iniciando o Jupyter notebook
+
 
 
 
