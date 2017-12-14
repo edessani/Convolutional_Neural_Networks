@@ -68,19 +68,28 @@ width, height, batch = 96, 96, 50
 sgd = SGD(lr=0.01, decay=5e-4, momentum=0.9, nesterov=True)
 ```
 
-- Define que o metodo de montagem do modelo será sequencial camanda por camanda
-```modelo = Sequential()```
+- Define que o metodo de montagem do modelo será sequencial camada por camada
+```
+modelo = Sequential()
+```
 
 - Construindo a primeira camada
-- Definimos que esta camada produzirá 64 filtros de saída, seu kernel é de 3 x 3 o stride é de 1 por 1
-- a entrada será de 224 por 224 colorida, portanto 3 canais e a funcão de ativacao desta camada será a ReLu 
+Definimos que esta camada produzirá 64 filtros de saída, seu kernel é de 3 x 3 o stride é de 1 por 1 a entrada será de 224 por 224 colorida, portanto 3 canais e a funcão de ativacao desta camada será a ReLu 
+
 ```
 modelo.add(Conv2D(filters = 64, kernel_size = (3, 3), padding= 'same', strides=(1,1), input_shape = (width, height, 3), activation = 'relu'))
-# seguindo sequencialmente configuramos a segunda camada, que assume como entrada a saída da camada anterior e por isso 
-# não é preciso declarar este valor, aqui ainda mantemos 4 filtros de saída, kernel de 3 x 3 e stride é de 1 por 1
+```
+
+- Seguindo sequencialmente configuramos a segunda camada, que assume como entrada a saída da camada anterior e por isso não é preciso declarar este valor, aqui ainda mantemos 4 filtros de saída, kernel de 3 x 3 e stride é de 1 por 1
+```
 modelo.add(Conv2D(filters = 64, kernel_size = (3, 3), padding='same', strides=(1,1), activation = 'relu'))
-# seguimos para a primeira camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+```
+
+- Seguimos para a primeira camada de max Pooling, está camada tem um pool size kernel de 2 por 2 e um stride também de 2 por 2
+```
 modelo.add(MaxPooling2D(pool_size = (2, 2), strides=(2,2)))
+```
+
 # com isso concluímos o primeiro bloco da VGG 16, vou considerar o fim de cada bloco sempre após uma camada de pooling
 
 # No segundo bloco da VGG 16 há um aumento no número de saídas das camadas em 2x os outros parametros sao iguais, este
