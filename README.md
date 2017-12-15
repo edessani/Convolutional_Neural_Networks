@@ -20,10 +20,14 @@ Acessar o site http://anaconda.com/download
 Fazer o Download da versao respectiva ao seu SO e também a versao do Python
 
 ## 2-Linux Ubuntu 16
-Python 3.6 https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh Python 2.7 https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh Abrir um terminal, acessar o local onde o arquivo foi baixado e seguir com o seguinte comando bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh (versao 3.6 do Python)
+Python 3.6 https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh 
+Python 2.7 https://repo.continuum.io/archive/Anaconda2-5.0.1-Linux-x86_64.sh 
+Abrir um terminal, acessar o local onde o arquivo foi baixado e seguir com o seguinte comando bash ~/Downloads/Anaconda3-5.0.1-Linux-x86_64.sh (versao 3.6 do Python)
 
 ## 3-Python para Windows
-Python 3.6 https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe Python 2.7 https://repo.continuum.io/archive/Anaconda2-5.0.1-Windows-x86_64.exe Para instalar é só dar um duplo clique no instalador e seguir
+Python 3.6 https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe 
+Python 2.7 https://repo.continuum.io/archive/Anaconda2-5.0.1-Windows-x86_64.exe 
+Para instalar é só dar um duplo clique no instalador e seguir
 
 # A partir deste momento vou cobrir os passos apenas para o linux como sistema operacional
 
@@ -31,10 +35,27 @@ Python 3.6 https://repo.continuum.io/archive/Anaconda3-5.0.1-Windows-x86_64.exe 
 Caso queira rodar os treinamentos com recursos de GPU é necessário instalar os pacotes CUDA e Cudnn as versoes destes sao muito importantes para que tudo funcione corretamente como até o momento a ultima versao disponível do tensorflow é a 1.4 vou usar as versões de Cuda e Cudnn que a pagina recomenda como versões suportadas lembrando que a placa de video deve ser compatível com cuda e ter os drivers da nvidia instalados
 
 ## 5-CUDA 8 GA2
-Para facilitar a instalacao vou usar o wget abrir um terminal acessar o local onde quer que o arquivo seja baixado /home/usuario/Downloads mkdir Cuda cd Cuda wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run assim que o download for concluido dar direito de execucao para o arquivo sudo chmod +x nomeArquivoBaixado sudo ./nomeArquivoBaixado mesma situacao para o patch desta versao wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run assim que o download for concluido dar direito de execucao para o arquivo sudo chmod +x nomeArquivoPatchBaixado sudo ./nomeArquivoPatchBaixado depois devemos baixar os arquivos do cuda e extrai-los wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170307/Ubuntu16_04_x64/libcudnn6_6.0.20-1+cuda8.0_amd64-deb sudo dpkg -i nomeArquivoBaixado
+Para facilitar a instalacao vou usar o wget abrir um terminal acessar o local onde quer que o arquivo seja baixado 
+/home/usuario/Downloads 
+mkdir Cuda 
+cd Cuda 
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda_8.0.61_375.26_linux-run 
+assim que o download for concluido dar direito de execucao para o arquivo 
+sudo chmod +x nomeArquivoBaixado 
+sudo ./nomeArquivoBaixado mesma situacao para o patch desta versao 
+wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/patches/2/cuda_8.0.61.2_linux-run 
+assim que o download for concluido dar direito de execucao para o arquivo 
+sudo chmod +x nomeArquivoPatchBaixado 
+sudo ./nomeArquivoPatchBaixado 
+depois devemos baixar os arquivos do cuda e extrai-los 
+wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/v6/prod/8.0_20170307/Ubuntu16_04_x64/libcudnn6_6.0.20-1+cuda8.0_amd64-deb 
+sudo dpkg -i nomeArquivoBaixado
 
 ## 6-Path
-O proximo passo é a inclusao do caminho destes pacotes no PATH sudo nano ~/.bashrc inserir no final do arquivo as seguintes linhas export PATH=/usr/local/cuda-8.0/binPATH:+:$PATHexportLDLIBRARYPATH=/usr/local/cuda−8.0/lib64 PATH:+:$PATHexportLDLIBRARYPATH=/usr/local/cuda−8.0/lib64 {LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+O proximo passo é a inclusao do caminho destes pacotes no PATH 
+sudo nano ~/.bashrc 
+inserir no final do arquivo as seguintes linhas 
+export PATH=/usr/local/cuda-8.0/binPATH:+:$PATHexportLDLIBRARYPATH=/usr/local/cuda−8.0/lib64 PATH:+:$PATHexportLDLIBRARYPATH=/usr/local/cuda−8.0/lib64 {LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 sudo apt-get install libcupti-dev
 
@@ -48,7 +69,7 @@ Dentro do terminal source activate ufes_lcad anaconda-navigator ou somente jupyt
 ## 9-Montando Rede VGG 16
 
 - Importando os pacotes 
-```c
+```
 import tensorflow as tf
 import keras
 import numpy as np
